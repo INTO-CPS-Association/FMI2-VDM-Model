@@ -67,6 +67,8 @@ public class FMUReader implements ExternalFormatReader
 	private static final String TERMINALS_AND_ICONS = "icons/terminalsAndIcons.xml";
 	private static final String TERMINALS_AND_ICONS_204 = "terminalsAndIcons/terminalsAndIcons.xml";
 	
+	private String exception = null;
+	
 	@Override
 	public char[] getText(File file, Charset charset) throws IOException
 	{
@@ -84,10 +86,11 @@ public class FMUReader implements ExternalFormatReader
 		}
 	}
 	
-	private void validate(File filename, Reader xml) throws IOException
+	private void validate(File filename, Reader xml)
 	{
 		try
 		{
+			exception = null;
 			File xsd = new File(System.getProperty("fmureader.xsd", "schema/fmi3.xsd"));
 
 			// Note that we pass a stream to allow the validator to determine the
@@ -104,17 +107,23 @@ public class FMUReader implements ExternalFormatReader
 		}
 		catch (SAXException e)
 		{
-			throw new IOException("XML validation: " + e);		// Raw exception gives file/line/col
+			exception = "XML validation: " + e;		// Raw exception gives file/line/col
 		}
 		catch (Exception e)
 		{
-			throw new IOException("XML validation: " + e.getMessage());
+			exception = "XML validation: " + e.getMessage();
 		}
 	}
 
 	private char[] processXML(File xmlFile) throws IOException
 	{
 		validate(xmlFile, new InputStreamReader(new FileInputStream(xmlFile), "utf8"));
+		
+		if (exception != null)
+		{
+			return validationException();
+		}
+		
 		String xmlContent = readFile(xmlFile);
 		
 		try
@@ -124,6 +133,8 @@ public class FMUReader implements ExternalFormatReader
 
 			Map<String, Type> schema = writeSchema(output);
 			String varName = "";
+			
+			missingVariable("validationError : [seq of char]", output);
 			
 			if (xmlContent.contains("<fmiModelDescription"))
 			{
@@ -180,6 +191,14 @@ public class FMUReader implements ExternalFormatReader
 			Xsd2VDM converter = new Xsd2VDM();
 
 			validate(new File(MODEL_DESCRIPTION), new StringReader(modelDescription));
+			
+			if (exception != null)
+			{
+				return validationException();
+			}
+			
+			missingVariable("validationError : [seq of char]", output);
+
 			InputSource input = new InputSource(new StringReader(modelDescription));
 			input.setSystemId(new File(MODEL_DESCRIPTION).toURI().toASCIIString());
 			converter.createVDMValue(schema, output, input, fmuFile.getAbsolutePath(), "modelDescription");
@@ -187,6 +206,12 @@ public class FMUReader implements ExternalFormatReader
 			if (buildDescription != null)
 			{
 				validate(new File(BUILD_DESCRIPTION), new StringReader(buildDescription));
+				
+				if (exception != null)
+				{
+					return validationException();
+				}
+
 				input = new InputSource(new StringReader(buildDescription));
 				input.setSystemId(new File(BUILD_DESCRIPTION).toURI().toASCIIString());
 				converter.createVDMValue(schema, output, input, fmuFile.getAbsolutePath(), "buildDescription");
@@ -199,6 +224,12 @@ public class FMUReader implements ExternalFormatReader
 			if (terminalsAndIcons != null)
 			{
 				validate(new File(TERMINALS_AND_ICONS), new StringReader(terminalsAndIcons));
+				
+				if (exception != null)
+				{
+					return validationException();
+				}
+
 				input = new InputSource(new StringReader(terminalsAndIcons));
 				input.setSystemId(new File(TERMINALS_AND_ICONS).toURI().toASCIIString());
 				converter.createVDMValue(schema, output, input, fmuFile.getAbsolutePath(), "terminalsAndIcons");		
@@ -218,6 +249,26 @@ public class FMUReader implements ExternalFormatReader
 		}
 	}
 
+	private char[] validationException() throws IOException
+	{
+		ByteArrayOutputStream result = new ByteArrayOutputStream();
+		PrintStream output = new PrintStream(result);
+
+		output.println("/**");
+		output.println(" * XML validation error");
+		output.println(" */");
+		output.println("values");
+		output.printf("    validationError : [seq of char] = \"%s\";\n\n", exception);
+		
+		missingVariable("modelDescription", output);
+		missingVariable("buildDescription", output);
+		missingVariable("terminalsAndIcons", output);
+
+		writeVDM(result);
+		
+		return result.toString("utf8").toCharArray();
+	}
+	
 	private void missingVariable(String varName, PrintStream output)
 	{
 		output.println("/**");

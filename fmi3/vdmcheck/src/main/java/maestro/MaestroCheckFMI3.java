@@ -139,9 +139,11 @@ public class MaestroCheckFMI3 {
             Xsd2VDM converter = new Xsd2VDM();
             Xsd2VDM.loadProperties(xsdFile);
             Map<String, Type> vdmSchema = converter.createVDMSchema(xsdFile, null, false, true);
+            
+            missingVariable("validationError : [seq of char]", vdmFile);
 
             if (modelFile != null) {
-                converter.createVDMValue(vdmSchema, vdmFile, modelFile, "modelDescription");
+                converter.createVDMValue(vdmSchema, vdmFile, modelFile, "modelDescription", true);
             } else {
                 missingVariable("modelDescription", vdmFile);
             }

@@ -33,7 +33,10 @@ functions
 	 */
 	isValidFMIConfiguration: FmiModelDescription | FmiBuildDescription | FmiTerminalsAndIcons +> bool
 	isValidFMIConfiguration(conf) ==
-		if is_(conf, FmiModelDescription)
+		if validationError <> nil
+		then /* @Printf("%s\n", validationError) */ false
+		
+		elseif is_(conf, FmiModelDescription)
 		then inv_FmiModelDescription'(conf)
 
 		elseif is_(conf, FmiBuildDescription)
@@ -51,6 +54,8 @@ functions
 	isValidFMIConfigurations: [FmiModelDescription] * [FmiBuildDescription] * [FmiTerminalsAndIcons] +> bool
 	isValidFMIConfigurations(model, build, terminals) == allOf
 	([
+		validationError <> nil => /* @Printf("%s\n", validationError) */ false,
+		
 		model <> nil => inv_FmiModelDescription'(model),
 		build <> nil => inv_FmiBuildDescription'(build),
 		terminals <> nil => inv_FmiTerminalsAndIcons'(mk_(terminals, model))
