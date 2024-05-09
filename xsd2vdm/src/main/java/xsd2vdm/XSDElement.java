@@ -291,57 +291,8 @@ public class XSDElement
 				sb.append("mk_Attribute(\"");
 				sb.append(pair.getKey());
 				sb.append("\", ");
-				
-				String value = pair.getValue();
-				
-				try
-				{
-					if (value.matches("^([+-.0123456789eE]+\\s*)+$"))
-					{
-						List<String> nums = new Vector<String>();
-
-						Pattern p = Pattern.compile("[+-.0123456789eE]+");
-						Matcher m = p.matcher(value);
-						
-						while (m.find())
-						{
-							nums.add(m.group());
-						}
-						
-						if (nums.size() == 1)
-						{
-							sb.append(nums.get(0));
-						}
-						else
-						{
-							String comma = "";
-							sb.append("[");
-							
-							for (String num: nums)
-							{
-								sb.append(comma);
-								sb.append(num);
-								comma = ", ";
-							}
-							
-							sb.append("]");
-						}
-
-						sb.append(")");
-					}
-					else
-					{
-						double num = Double.parseDouble(value);
-						sb.append(num);
-						sb.append(")");
-					}
-				}
-				catch (NumberFormatException e)
-				{
-					sb.append("\"");
-					sb.append(value);
-					sb.append("\")");
-				}
+				sb.append(valueToVDM(pair.getValue()));
+				sb.append(")");
 				
 				sep = ",\n";
 			}
@@ -378,6 +329,63 @@ public class XSDElement
 		sb.append(indent);
 		sb.append(")");
 
+		return sb.toString();
+	}
+	
+	/**
+	 * Most XML content string are just turned into VDM "quoted strings". But if the content
+	 * parses as a number or sequence of numbers, it is turned into -1.23 or [1, 2, 3] etc.  
+	 */
+	protected String valueToVDM(String value)
+	{
+		StringBuilder sb = new StringBuilder();
+		
+		try
+		{
+			if (value.matches("^([+-.0123456789eE]+\\s*)+$"))
+			{
+				List<String> nums = new Vector<String>();
+
+				Pattern p = Pattern.compile("[+-.0123456789eE]+");
+				Matcher m = p.matcher(value);
+				
+				while (m.find())
+				{
+					nums.add(m.group());
+				}
+				
+				if (nums.size() == 1)
+				{
+					sb.append(nums.get(0));
+				}
+				else
+				{
+					String comma = "";
+					sb.append("[");
+					
+					for (String num: nums)
+					{
+						sb.append(comma);
+						sb.append(num);
+						comma = ", ";
+					}
+					
+					sb.append("]");
+				}
+			}
+			else
+			{
+				double num = Double.parseDouble(value);
+				sb.append(num);
+			}
+		}
+		catch (NumberFormatException e)
+		{
+			sb.append("\"");
+			sb.append(value);
+			sb.append("\"");
+		}
+		
 		return sb.toString();
 	}
 	
