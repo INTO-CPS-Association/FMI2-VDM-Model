@@ -239,11 +239,13 @@ public class XSDElement
 	 * The toVDM method produces a raw VDM model of XML document elements.
 	 *
 	 *	Element ::
-	 *		name		: seq1 of char
+	 *		$loc		: seq1 of char
+	 *		type		: seq1 of char
 	 *		attrs		: seq of Attribute
 	 *		children	: seq of Element | Content;
 	 *
 	 *	Attribute ::
+	 *		$loc		: seq1 of char
 	 *		name		: seq1 of char
 	 *		value		: seq1 of char;
 	 *
@@ -269,6 +271,12 @@ public class XSDElement
 		sb.append("(\n");
 		sb.append(indent2);
 		sb.append("\"");
+		sb.append(file.getName());
+		sb.append(":");
+		sb.append(line);
+		sb.append("\",\n");
+		sb.append(indent2);
+		sb.append("\"");
 		sb.append(type);
 		sb.append("\",\n");
 
@@ -289,6 +297,10 @@ public class XSDElement
 				sb.append(sep);
 				sb.append(indent3);
 				sb.append("mk_Attribute(\"");
+				sb.append(file.getName());
+				sb.append(":");
+				sb.append(line);
+				sb.append("\", \"");
 				sb.append(pair.getKey());
 				sb.append("\", ");
 				sb.append(valueToVDM(pair.getValue()));
@@ -351,7 +363,8 @@ public class XSDElement
 				
 				while (m.find())
 				{
-					nums.add(m.group());
+					double num = Double.parseDouble(m.group());
+					nums.add(Double.toString(num));
 				}
 				
 				if (nums.size() == 1)
