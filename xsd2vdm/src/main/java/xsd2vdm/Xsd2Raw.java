@@ -69,6 +69,21 @@ public class Xsd2Raw
 			System.exit(1);
 		}
 		
+		Xsd2Raw xsd2raw = new Xsd2Raw(xsdFile, vdmFile);
+		xsd2raw.process();
+	}
+
+	private final File xsdFile;
+	private final PrintStream vdmFile;
+	
+	public Xsd2Raw(File xsdFile, PrintStream vdmFile)
+	{
+		this.xsdFile = xsdFile;
+		this.vdmFile = vdmFile;
+	}
+	
+	public void process() throws Exception
+	{
 		Xsd2VDM.loadProperties(xsdFile);
 		SAXParserFactory factory = SAXParserFactory.newInstance();
 		SAXParser saxParser = factory.newSAXParser();
