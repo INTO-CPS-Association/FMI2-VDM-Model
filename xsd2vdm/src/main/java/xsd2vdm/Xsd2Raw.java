@@ -30,6 +30,7 @@
 package xsd2vdm;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.PrintStream;
 import java.util.Date;
 import java.util.HashSet;
@@ -37,29 +38,47 @@ import java.util.List;
 import java.util.Set;
 import java.util.Vector;
 
+import javax.xml.XMLConstants;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
+import javax.xml.transform.Source;
+import javax.xml.transform.stream.StreamSource;
+import javax.xml.validation.Schema;
+import javax.xml.validation.SchemaFactory;
+import javax.xml.validation.Validator;
+
+import org.xml.sax.SAXException;
 
 public class Xsd2Raw
 {
 	public static void main(String[] args) throws Exception
 	{
 		File xsdFile = null;
+		File xmlFile = null;
 		PrintStream vdmFile = null;
 		
 		if (args.length == 1)
 		{
-			xsdFile = new File(args[0]);
+			xsdFile = null;
+			xmlFile = new File(args[0]);
 			vdmFile = System.out;
 		}
 		else if (args.length == 2)
 		{
-			xsdFile = new File(args[0]);
+			xsdFile = null;
+			xmlFile = new File(args[0]);
 			vdmFile = new PrintStream(new File(args[1]));
+		}
+		else if (args.length == 3)
+		{
+			xsdFile = new File(args[0]);
+			xmlFile = new File(args[1]);
+			vdmFile = new PrintStream(new File(args[2]));
 		}
 		else
 		{
-			System.err.println("Usage: Xsd2Raw <XSD file> [<VDM out file>]");
+			System.err.println("Usage: Xsd2Raw <XML file> [<VDM out file>]");
+			System.err.println("       Xsd2Raw <XSD file> <XML file> [<VDM out file>]");
 			System.exit(1);
 		}
 		
@@ -69,22 +88,61 @@ public class Xsd2Raw
 			System.exit(1);
 		}
 		
-		Xsd2Raw xsd2raw = new Xsd2Raw(xsdFile, vdmFile);
+		if (!xmlFile.exists())
+		{
+			System.err.println("Cannot open " + xmlFile);
+			System.exit(1);
+		}
+		
+		Xsd2Raw xsd2raw = new Xsd2Raw(xsdFile, xmlFile, vdmFile);
 		xsd2raw.process();
 	}
 
 	private final File xsdFile;
+	private final File xmlFile;
 	private final PrintStream vdmFile;
 	
-	public Xsd2Raw(File xsdFile, PrintStream vdmFile)
+	public Xsd2Raw(File xsdFile, File xmlFile, PrintStream vdmFile)
 	{
 		this.xsdFile = xsdFile;
+		this.xmlFile = xmlFile;
 		this.vdmFile = vdmFile;
+	}
+	
+	private void validate(File xsd, File xml) throws Exception
+	{
+		try
+		{
+			// Note that we pass a stream to allow the validator to determine the
+			// encoding, rather than passing a File, which seems to use default encoding.
+			Source xmlFile = new StreamSource(new FileInputStream(xml));
+			xmlFile.setSystemId(xml.toURI().toASCIIString());
+			Source xsdFile = new StreamSource(new FileInputStream(xsd));
+			xsdFile.setSystemId(xsd.toURI().toASCIIString());
+			SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
+			
+			Schema schema = schemaFactory.newSchema(xsdFile);
+			Validator validator = schema.newValidator();
+			validator.validate(xmlFile);
+		}
+		catch (SAXException e)
+		{
+			throw new Exception("XML validation: " + e);		// Raw exception gives file/line/col
+		}
+		catch (Exception e)
+		{
+			throw new Exception("XML validation: " + e.getMessage());
+		}
 	}
 	
 	public void process() throws Exception
 	{
-		Xsd2VDM.loadProperties(xsdFile);
+		if (xsdFile != null)
+		{
+			validate(xsdFile, xmlFile);
+		}
+		
+		Xsd2VDM.loadProperties(xmlFile);
 		SAXParserFactory factory = SAXParserFactory.newInstance();
 		SAXParser saxParser = factory.newSAXParser();
 		
@@ -92,8 +150,8 @@ public class Xsd2Raw
 		List<String> includes = new Vector<String>();
 		List<XSDElement> roots = new Vector<XSDElement>();
 
-		File parent = xsdFile.getParentFile();
-		includes.add(xsdFile.getName());
+		File parent = xmlFile.getParentFile();
+		includes.add(xmlFile.getName());
 		
 		while (!includes.isEmpty())
 		{
@@ -111,7 +169,7 @@ public class Xsd2Raw
 		}
 		
 		vdmFile.println("/**");
-		vdmFile.println(" * VDM created from " + xsdFile + " on " + new Date());
+		vdmFile.println(" * VDM created from " + xmlFile + " on " + new Date());
 		vdmFile.println(" * DO NOT EDIT!");
 		vdmFile.println(" */");
 		vdmFile.println("values");
