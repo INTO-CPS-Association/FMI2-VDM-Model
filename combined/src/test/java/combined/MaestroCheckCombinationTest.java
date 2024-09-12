@@ -74,7 +74,7 @@ public class MaestroCheckCombinationTest
 				errors.get(1).message);
 		Assert.assertTrue(errors.get(1).doclinks != null);
 		Assert.assertEquals(
-				"<FMI2_STANDARD>#section-terminalvars\n",
+				"<FMI3_STANDARD>#section-terminalvars\n",
 				errors.get(1).doclinks.get(0).toString());
 	}
 	
