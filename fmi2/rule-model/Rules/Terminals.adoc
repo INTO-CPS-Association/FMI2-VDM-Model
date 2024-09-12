@@ -54,7 +54,7 @@ See <<_ico>>
 ifdef::hidden[]
 // {vdm}
 
--- @DocLink("<FMI2_STANDARD>#section-terminalvars"). Note, from FMI3
+-- @DocLink("<FMI3_STANDARD>#section-terminalvars"). Note, from FMI3
 // {vdm}
 endif::[]
 // {vdm}
@@ -80,7 +80,7 @@ See <<section-terminalvars>>
 ifdef::hidden[]
 // {vdm}
 
--- @DocLink("<FMI2_STANDARD>#_terminal_stream_member_variable"). Note, from FMI3
+-- @DocLink("<FMI3_STANDARD>#_terminal_stream_member_variable"). Note, from FMI3
 // {vdm}
 endif::[]
 // {vdm}
@@ -114,7 +114,7 @@ See <<_terminal_stream_member_variable>>
 ifdef::hidden[]
 // {vdm}
 
--- @DocLink("<FMI2_STANDARD>#_terminal_graphical_representation"). Note, from FMI3
+-- @DocLink("<FMI3_STANDARD>#_terminal_graphical_representation"). Note, from FMI3
 // {vdm}
 endif::[]
 // {vdm}
