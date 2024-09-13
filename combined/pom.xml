@@ -18,7 +18,7 @@
 	<description>A combined FMI2/FMI3 test for MaestroChecks</description>
 
     <properties>
-        <vdmj.version>4.5.0-P-SNAPSHOT</vdmj.version>
+        <vdmj.version>4.5.0-P</vdmj.version>
     </properties>
 
  	<dependencies>
