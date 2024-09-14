@@ -12,7 +12,7 @@ endif::[]
 ifdef::hidden[]
 // {vdm}
 
--- @DocLink("<FMI2_STANDARD>#_definition_of_the_model_structure_modelstructure")
+-- @DocLink("<FMI2_STANDARD> Section 2.2.8, Page 58")
 // {vdm}
 endif::[]
 // {vdm}

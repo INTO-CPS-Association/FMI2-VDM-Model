@@ -12,7 +12,7 @@ endif::[]
 ifdef::hidden[]
 // {vdm}
 
--- @DocLink("<FMI2_STANDARD>#_definition_of_a_default_experiment_defaultexperiment")
+-- @DocLink("<FMI2_STANDARD> Section 2.2.5, Page 45")
 // {vdm}
 endif::[]
 // {vdm}
@@ -30,7 +30,7 @@ See <<_definition_of_a_default_experiment_defaultexperiment>>
 ifdef::hidden[]
 // {vdm}
 
--- @DocLink("<FMI2_STANDARD>#_definition_of_a_default_experiment_defaultexperiment")
+-- @DocLink("<FMI2_STANDARD> Section 2.2.5, Page 45")
 // {vdm}
 endif::[]
 // {vdm}
@@ -48,7 +48,7 @@ See <<_definition_of_a_default_experiment_defaultexperiment>>
 ifdef::hidden[]
 // {vdm}
 
--- @DocLink("<FMI2_STANDARD>#_definition_of_a_default_experiment_defaultexperiment")
+-- @DocLink("<FMI2_STANDARD> Section 2.2.5, Page 45")
 // {vdm}
 endif::[]
 // {vdm}

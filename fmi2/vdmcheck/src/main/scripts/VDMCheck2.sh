@@ -60,7 +60,7 @@ fi
 
 if [ -z "$LINK2" ]
 then
-	LINK2="https://fmi-standard.org/docs/2.0/"
+	LINK2="https://github.com/modelica/fmi-standard/releases/download/v2.0.4/FMI-Specification-2.0.4.pdf"
 fi
 
 if [ -z "$LINK3" ]

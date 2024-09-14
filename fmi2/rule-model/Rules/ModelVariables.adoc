@@ -12,7 +12,7 @@ endif::[]
 ifdef::hidden[]
 // {vdm}
 
--- @DocLink("<FMI2_STANDARD>#_definition_of_model_variables_modelvariables")
+-- @DocLink("<FMI2_STANDARD> Section 2.2.7, Page 46")
 // {vdm}
 endif::[]
 // {vdm}
@@ -77,7 +77,7 @@ See <<_definition_of_model_variables_modelvariables>>
 ifdef::hidden[]
 // {vdm}
 
--- @DocLink("<FMI2_STANDARD>#_definition_of_model_variables_modelvariables")
+-- @DocLink("<FMI2_STANDARD> Section 2.2.7, Page 46")
 // {vdm}
 endif::[]
 // {vdm}
@@ -96,7 +96,7 @@ See <<_definition_of_model_variables_modelvariables>>
 ifdef::hidden[]
 // {vdm}
 
--- @DocLink("<FMI2_STANDARD>#_definition_of_model_variables_modelvariables")
+-- @DocLink("<FMI2_STANDARD> Section 2.2.7, Page 46")
 // {vdm}
 endif::[]
 // {vdm}
@@ -127,7 +127,7 @@ See <<_definition_of_model_variables_modelvariables>>
 ifdef::hidden[]
 // {vdm}
 
--- @DocLink("<FMI2_STANDARD>#_definition_of_model_variables_modelvariables")
+-- @DocLink("<FMI2_STANDARD> Section 2.2.7, Page 46")
 // {vdm}
 endif::[]
 // {vdm}

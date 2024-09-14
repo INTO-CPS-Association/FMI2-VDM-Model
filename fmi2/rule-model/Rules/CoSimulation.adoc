@@ -12,7 +12,7 @@ endif::[]
 ifdef::hidden[]
 // {vdm}
 
--- @DocLink("<FMI2_STANDARD>#_header_files_and_naming_of_functions")
+-- @DocLink("<FMI2_STANDARD> Section 2.1.1, Page 14")
 // {vdm}
 endif::[]
 // {vdm}
@@ -31,7 +31,7 @@ See <<_header_files_and_naming_of_functions>>
 ifdef::hidden[]
 // {vdm}
 
--- @DocLink("<FMI2_STANDARD>#_header_files_and_naming_of_functions")
+-- @DocLink("<FMI2_STANDARD> Section 2.1.1, Page 14")
 // {vdm}
 endif::[]
 // {vdm}

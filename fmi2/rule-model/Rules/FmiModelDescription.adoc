@@ -12,7 +12,7 @@ endif::[]
 ifdef::hidden[]
 // {vdm}
 
--- @DocLink("<FMI2_STANDARD>#_inquire_platform_and_version_number_of_header_files")
+-- @DocLink("<FMI2_STANDARD> Section 2.1.4, Page 19")
 // {vdm}
 endif::[]
 // {vdm}
@@ -31,7 +31,7 @@ See <<_inquire_platform_and_version_number_of_header_files>>
 ifdef::hidden[]
 // {vdm}
 
--- @DocLink("<FMI2_STANDARD>#_definition_of_vendor_annotations_vendorannotations")
+-- @DocLink("<FMI2_STANDARD> Section 2.2.6, Page 45")
 // {vdm}
 endif::[]
 // {vdm}
@@ -54,7 +54,7 @@ See <<_definition_of_vendor_annotations_vendorannotations>>
 ifdef::hidden[]
 // {vdm}
 
--- @DocLink("<FMI2_STANDARD>#_definition_of_an_fmu_fmimodeldescription")
+-- @DocLink("<FMI2_STANDARD> Section 2.2.1, Page 31")
 // {vdm}
 endif::[]
 // {vdm}
@@ -72,7 +72,7 @@ See <<_definition_of_an_fmu_fmimodeldescription>>
 ifdef::hidden[]
 // {vdm}
 
--- @DocLink("<FMI2_STANDARD>#_definition_of_an_fmu_fmimodeldescription")
+-- @DocLink("<FMI2_STANDARD> Section 2.2.1, Page 31")
 // {vdm}
 endif::[]
 // {vdm}
@@ -91,7 +91,7 @@ See <<_definition_of_an_fmu_fmimodeldescription>>
 ifdef::hidden[]
 // {vdm}
 
--- @DocLink("<FMI2_STANDARD>#_definition_of_types_typedefinitions")
+-- @DocLink("<FMI2_STANDARD> Section 2.2.3, Page 40")
 // {vdm}
 endif::[]
 // {vdm}
@@ -117,8 +117,8 @@ See <<_definition_of_types_typedefinitions>>
 ifdef::hidden[]
 // {vdm}
 
--- @DocLink("<FMI2_STANDARD>#_definition_of_model_variables_modelvariables")
--- @DocLink("<FMI2_STANDARD>#_definition_of_types_typedefinitions")
+-- @DocLink("<FMI2_STANDARD> Section 2.2.7, Page 46")
+-- @DocLink("<FMI2_STANDARD> Section 2.2.3, Page 40")
 // {vdm}
 endif::[]
 // {vdm}
@@ -148,7 +148,7 @@ validVariableTypes(fmd) == allOf
 ifdef::hidden[]
 // {vdm}
 
--- @DocLink("<FMI2_STANDARD>#_definition_of_types_typedefinitions")
+-- @DocLink("<FMI2_STANDARD> Section 2.2.3, Page 40")
 // {vdm}
 endif::[]
 // {vdm}
@@ -171,7 +171,7 @@ See <<_definition_of_types_typedefinitions>>
 ifdef::hidden[]
 // {vdm}
 
--- @DocLink("<FMI2_STANDARD>#_definition_of_model_variables_modelvariables")
+-- @DocLink("<FMI2_STANDARD> Section 2.2.7, Page 46")
 // {vdm}
 endif::[]
 // {vdm}
@@ -199,7 +199,7 @@ See <<_definition_of_model_variables_modelvariables>>
 ifdef::hidden[]
 // {vdm}
 
--- @DocLink("<FMI2_STANDARD>#_definition_of_model_variables_modelvariables")
+-- @DocLink("<FMI2_STANDARD> Section 2.2.7, Page 46")
 // {vdm}
 endif::[]
 // {vdm}
@@ -232,7 +232,7 @@ See <<_definition_of_model_variables_modelvariables>>
 ifdef::hidden[]
 // {vdm}
 
--- @DocLink("<FMI2_STANDARD>#_definition_of_types_typedefinitions")
+-- @DocLink("<FMI2_STANDARD> Section 2.2.3, Page 40")
 // {vdm}
 endif::[]
 // {vdm}
@@ -275,7 +275,7 @@ See <<_definition_of_types_typedefinitions>>
 ifdef::hidden[]
 // {vdm}
 
--- @DocLink("<FMI2_STANDARD>#_definition_of_model_variables_modelvariables")
+-- @DocLink("<FMI2_STANDARD> Section 2.2.7, Page 46")
 // {vdm}
 endif::[]
 // {vdm}
@@ -299,7 +299,7 @@ See <<_definition_of_model_variables_modelvariables>>
 ifdef::hidden[]
 // {vdm}
 
--- @DocLink("<FMI2_STANDARD>#_definition_of_model_variables_modelvariables")
+-- @DocLink("<FMI2_STANDARD> Section 2.2.7, Page 46")
 // {vdm}
 endif::[]
 // {vdm}
@@ -324,7 +324,7 @@ See <<_definition_of_model_variables_modelvariables>>
 ifdef::hidden[]
 // {vdm}
 
--- @DocLink("<FMI2_STANDARD>#table-variableBase-attributes")
+-- @DocLink("<FMI2_STANDARD> Section 2.2.7, Page 46")
 // {vdm}
 endif::[]
 // {vdm}
@@ -356,7 +356,7 @@ See <<table-variableBase-attributes>>
 ifdef::hidden[]
 // {vdm}
 
--- @DocLink("<FMI2_STANDARD>#_definition_of_the_model_structure_modelstructure")
+-- @DocLink("<FMI2_STANDARD> Section 2.2.8, Page 58")
 // {vdm}
 endif::[]
 // {vdm}
@@ -394,7 +394,7 @@ See <<_definition_of_the_model_structure_modelstructure>>
 ifdef::hidden[]
 // {vdm}
 
--- @DocLink("<FMI2_STANDARD>#_definition_of_the_model_structure_modelstructure")
+-- @DocLink("<FMI2_STANDARD> Section 2.2.8, Page 58")
 // {vdm}
 endif::[]
 // {vdm}
@@ -428,7 +428,7 @@ See <<_definition_of_the_model_structure_modelstructure>>
 ifdef::hidden[]
 // {vdm}
 
--- @DocLink("<FMI2_STANDARD>#_definition_of_the_model_structure_modelstructure")
+-- @DocLink("<FMI2_STANDARD> Section 2.2.8, Page 58")
 // {vdm}
 endif::[]
 // {vdm}

@@ -12,7 +12,7 @@ endif::[]
 ifdef::hidden[]
 // {vdm}
 
--- @DocLink("<FMI2_STANDARD>#_definition_of_log_categories_logcategories")
+-- @DocLink("<FMI2_STANDARD> Section 2.2.4, Page 44")
 // {vdm}
 endif::[]
 // {vdm}

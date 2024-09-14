@@ -49,7 +49,7 @@ public class VDMCheckPlus
 		File filename = null;
 		String vdmOUT = null;
 		String xmlIN = null;
-		String prefix = "https://fmi-standard.org/docs/3.0/";
+		String prefix = "https://github.com/modelica/fmi-standard/releases/download/v2.0.4/FMI-Specification-2.0.4.pdf";
 		
 		for (int a=0; a < args.length; a++)
 		{

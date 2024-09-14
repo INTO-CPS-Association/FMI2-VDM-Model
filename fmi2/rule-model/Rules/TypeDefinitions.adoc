@@ -12,7 +12,7 @@ endif::[]
 ifdef::hidden[]
 // {vdm}
 
--- @DocLink("<FMI2_STANDARD>#_definition_of_types_typedefinitions")
+-- @DocLink("<FMI2_STANDARD> Section 2.2.3, Page 40")
 // {vdm}
 endif::[]
 // {vdm}
@@ -32,7 +32,7 @@ See <<_definition_of_types_typedefinitions>>
 ifdef::hidden[]
 // {vdm}
 
--- @DocLink("<FMI2_STANDARD>#_definition_of_types_typedefinitions")
+-- @DocLink("<FMI2_STANDARD> Section 2.2.3, Page 40")
 // {vdm}
 endif::[]
 // {vdm}
@@ -59,7 +59,7 @@ See <<_definition_of_types_typedefinitions>>
 ifdef::hidden[]
 // {vdm}
 
--- @DocLink("<FMI2_STANDARD>#_definition_of_types_typedefinitions")
+-- @DocLink("<FMI2_STANDARD> Section 2.2.3, Page 40")
 // {vdm}
 endif::[]
 // {vdm}
@@ -79,7 +79,7 @@ See <<_definition_of_types_typedefinitions>>
 ifdef::hidden[]
 // {vdm}
 
--- @DocLink("<FMI2_STANDARD>#_definition_of_types_typedefinitions")
+-- @DocLink("<FMI2_STANDARD> Section 2.2.3, Page 40")
 // {vdm}
 endif::[]
 // {vdm}

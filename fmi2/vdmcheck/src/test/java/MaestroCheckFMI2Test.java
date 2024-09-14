@@ -35,7 +35,7 @@ public class MaestroCheckFMI2Test
 				errors.get(0).message);
 		Assert.assertTrue(errors.get(0).doclinks != null);
 		Assert.assertEquals(
-				"<FMI2_STANDARD>#_definition_of_the_model_structure_modelstructure\n",
+				"<FMI2_STANDARD> Section 2.2.8, Page 58\n",
 				errors.get(0).doclinks.get(0).toString());
 
 		errors = checker.check(null, build, null);

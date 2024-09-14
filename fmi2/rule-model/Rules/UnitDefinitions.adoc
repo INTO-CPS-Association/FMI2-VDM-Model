@@ -12,7 +12,7 @@ endif::[]
 ifdef::hidden[]
 // {vdm}
 
--- @DocLink("<FMI2_STANDARD>#_definition_of_units_unitdefinitions")
+-- @DocLink("<FMI2_STANDARD> Section 2.2.2, Page 35")
 // {vdm}
 endif::[]
 // {vdm}
@@ -31,7 +31,7 @@ See <<_definition_of_units_unitdefinitions>>
 ifdef::hidden[]
 // {vdm}
 
--- @DocLink("<FMI2_STANDARD>#_definition_of_units_unitdefinitions")
+-- @DocLink("<FMI2_STANDARD> Section 2.2.2, Page 35")
 // {vdm}
 endif::[]
 // {vdm}
