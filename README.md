@@ -40,20 +40,16 @@ To install the VDMCheck package, unzip the distribution ZIP (the top level conta
 ## Execution
 ```
 $ VDMCheck2.sh
-Usage: VDMCheck2.sh [-v <VDM outfile>] -x <XML> | <file>.fmu | <file>.xml
+Usage: VDMCheck2.sh [-h2|-h3 <FMI2/3 Standard base URL>] [-v <VDM outfile>] -x <XML> | <file>.fmu | <file>.xml
 $ VDMCheck3.sh 
-Usage: VDMCheck3.sh [-v <VDM outfile>] -x <XML> | <file>.fmu | <file>.xml
-$ VDMCheck3+.sh 
 Usage: VDMCheck3.sh [-h <FMI Standard base URL>] [-v <VDM outfile>] <file>.fmu | <file>.xml
 
 or
 
 C:\> java -jar <path to vdmcheck2 installation>/vdmcheck2.jar 
-Usage: java -jar vdmcheck2.jar [-v <VDM outfile>] -x <XML> | <file>.fmu | <file>.xml
+Usage: java -jar vdmcheck2.jar [-h2|-h3 <FMI2/3 Standard base URL>] [-v <VDM outfile>] -x <XML> | <file>.fmu | <file>.xml
 C:\> java -jar <path to vdmcheck3 installation>/vdmcheck3.jar 
-Usage: java -jar vdmcheck3.jar [-v <VDM outfile>] -x <XML> | <file>.fmu | <file>.xml
-C:\> java -cp <path to vdmcheck3 installation>/vdmcheck3.jar VDMCheckPlus
-Usage: java -cp vdmcheck3.jar VDMCheckPlus [-h <FMI Standard base URL>] [-v <VDM outfile>] <file>.fmu | <file>.xml
+Usage: java -jar vdmcheck3.jar [-h <FMI Standard base URL>] [-v <VDM outfile>] <file>.fmu | <file>.xml
 
 ```
 For normal use, the tool would be invoked with a single FMU file, though it is possible to analyse an extracted modelDescription.xml file.
@@ -62,23 +58,20 @@ It is possible to capture the VDM-SL version of the XML file that is produced by
 
 If the FMU or XML has no errors, the tool will report `No errors found` and have an exit code of 0.
 
-Otherwise errors are listed on standard output. They consist of a unique error number, followed by a section number in the FMI Standard that is relevant to the error, followed by an error message:
+Otherwise errors are listed on standard output. They consist of a unique test name followed by an error message, plus a link the FMI Standard that is relevant to the error:
 
 ```
-> VDMCheck2.sh invalidOutputs2.xml
-Checking XML
-1306: 2.2.7 Variable "v1" causality/variability/initial/start <input>/<continuous>/nil/nil invalid at line 6
-1305: 2.2.7 ScalarVariable "v1" invalid at line 6
-1009: 2.2.1 ScalarVariables invalid
+> VDMCheck2.sh 2.2.1_invalidOutputs2.xml
+validCSModelIdentifier: "Test FMU" not valid C variable name at modelDescription:4
+https://fmi-standard.org/docs/2.0/#_header_files_and_naming_of_functions
+validVariableAttributes: Variable "v1" causality/variability/initial/start <input>/<continuous>/nil/nil invalid at modelDescription:6
+https://fmi-standard.org/docs/2.0/#_definition_of_model_variables_modelvariables
+validOutputs: Outputs should be omitted at modelDescription:10
+https://fmi-standard.org/docs/2.0/#_definition_of_the_model_structure_modelstructure
 Errors found.
-```
-Here, error 1306 indicates a problem with the configuration of the "v1" variable. The line number indicates the location in the XML file. Then 1305 summarises that there were errors (possibly several) with v1, and error 1009 indicates that there were errors with the ScalarVariables in general. The exit code from the tool will be 1 rather than 0, since there were errors.
 
-Version "3+" of the tools produces a slightly different output format, which includes the name of the rule that failed and a URL link to the FMI Standard section where the correct configuration is discussed:
-```
-> VDMCheck3+.sh transpose.fmu
+> VDMCheck3.sh transpose.fmu
 validCSIntermediateUpdate: canReturnEarlyAfterIntermediateUpdate requires providesIntermediateUpdate at modelDescription.xml:22
 See: https://fmi-standard.org/docs/3.0/#table-CoSimulation-details
-
 Errors found.
 ```
