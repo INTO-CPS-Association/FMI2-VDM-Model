@@ -63,11 +63,11 @@ Otherwise errors are listed on standard output. They consist of a unique test na
 ```
 > VDMCheck2.sh 2.2.1_invalidOutputs2.xml
 validCSModelIdentifier: "Test FMU" not valid C variable name at modelDescription:4
-https://fmi-standard.org/docs/2.0/#_header_files_and_naming_of_functions
+https://github.com/modelica/fmi-standard/releases/download/v2.0.4/FMI-Specification-2.0.4.pdf Section 2.1.1, Page 14
 validVariableAttributes: Variable "v1" causality/variability/initial/start <input>/<continuous>/nil/nil invalid at modelDescription:6
-https://fmi-standard.org/docs/2.0/#_definition_of_model_variables_modelvariables
+https://github.com/modelica/fmi-standard/releases/download/v2.0.4/FMI-Specification-2.0.4.pdf Section 2.2.7, Page 46
 validOutputs: Outputs should be omitted at modelDescription:10
-https://fmi-standard.org/docs/2.0/#_definition_of_the_model_structure_modelstructure
+https://github.com/modelica/fmi-standard/releases/download/v2.0.4/FMI-Specification-2.0.4.pdf Section 2.2.8, Page 58
 Errors found.
 
 > VDMCheck3.sh transpose.fmu
