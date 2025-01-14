@@ -82,7 +82,7 @@ public class Xsd2Raw
 			System.exit(1);
 		}
 		
-		if (!xsdFile.exists())
+		if (xsdFile != null && !xsdFile.exists())
 		{
 			System.err.println("Cannot open " + xsdFile);
 			System.exit(1);
